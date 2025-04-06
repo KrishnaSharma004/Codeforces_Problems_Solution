@@ -14,29 +14,19 @@ using namespace std;
 #define si set<int>
 #define floop(i,a,b) for(int i=a;i<b;++i)
 #define sp " "
+ll cost=1e18;
+
 void logic(){
-    str s;
-    cin >> s;
-    bool ans = true ;
-    int n = s.size();
-
-    floop(i,1,n){
-        if(s[i] != s[i-1]){
-            ans = false ;
-            break;
-        }
-    }
-    if(ans) cout << s << nl;
-
-    else{
-        str t= "";
-        floop(i,0,n){
-            t += "10";
-        }
-        cout << t <<nl;;
+    ll n,m;
+    cin >> n >> m;
+    if(n==1){
+        cout << 0 << nl;
+    }else if(n==2){
+        cout << m << nl;
+    }else{
+        cout << 2LL*m << nl;
     }
 }
-
 int main(){
     int t;
     cin >> t;
@@ -44,5 +34,4 @@ int main(){
         logic();
     }
     return 0;
-
 }
