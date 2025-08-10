@@ -124,42 +124,31 @@ ll calculateSumOfFirstX(int x){
     return x*1ll*(x+1)/2;
 }
 void logic(){
-    int n;
-    cin >> n;
-    mint mp;
-    floop(i,0,n){
-        int temp;
-        cin >> temp;
-        floop(j,0,31){
-            if(temp&(1<<j)) mp[j]++;
+    int n, w; 
+        cin >> n >> w;
+        vector<int> a(n);
+        for(int i = 0; i < n; i++) {
+            cin >> a[i];
         }
-    }
-    int gcd=0;
-    int f=1;
-    fauto(i,mp){
-        f=0;
-        if(gcd==0) gcd = i.second;
-        else gcd = __gcd(gcd,i.second);
-    }
-    if(f){
-        floop(i,0,n){
-            cout << i+1 << sp;
+        vector<int> widthCount(21, 0); 
+        for(int i = 0; i < n; i++) {
+            int logVal = log2(a[i]);
+            widthCount[logVal]++;
         }
-        cout << nl;
-        return ;
-    }
-    vint factr;
-    for(int i=1;i*i<=gcd;++i){
-        if(gcd%i==0){
-            factr.push_back(i);
-            if(i!=gcd/i)
-            factr.push_back(gcd/i);
+        int height = 0;
+        int countOfUsedBoxes = 0;
+        while(countOfUsedBoxes<n){
+            int temp = w;
+            for(int i = 20; i >= 0; i--) {
+                while(widthCount[i] > 0 && (1 << i) <= temp) {
+                    temp -= (1 << i);
+                    widthCount[i]--;
+                    countOfUsedBoxes++;
+                }
+            }
+            height++;
         }
-    }
-    sort(as(factr));
-    for(int f:factr) cout << f << sp;
-    
-    cout << nl;
+        cout << height << endl;
 }
 int main(){
     int t;
