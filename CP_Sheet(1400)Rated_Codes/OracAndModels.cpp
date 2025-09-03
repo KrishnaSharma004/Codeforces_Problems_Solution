@@ -122,49 +122,31 @@ ll calculateSumOfFirstX(int x){
 }
 void logic(){
     int n;
-	cin >> n;
-
-	vint u(n), s(n);
-	floop(i,0,n)	cin >> u[i];
-	floop(i,0,n)    cin >> s[i];
-	
-	vvint skills(n);
-
-	floop(i,0,n)
-	{
-		skills[u[i] - 1].push_back(s[i]);
-	}
-
-	for (auto &v : skills) //Total O(nlogn)
-	{
-		sort(v.begin(), v.end());
-	}
-
-	vvll pre(n, vll(1, 0));
-	floop(i,0,n)
-	{
-		for (int j = 0; j < skills[i].size(); j++)
-		{
-			pre[i].push_back(pre[i].back() + skills[i][j]);
-		}
-	}
-
-	vll ans(n + 1); 
-	floop(i,0,n)
-	{
-		int nums = skills[i].size();
-		for (int k = 1; k <= nums; k++)
-		{
-			ans[k] += pre[i].back() - pre[i][nums % k];
-		}
-	}
-
-	floop(i,1,n+1)
-	{
-		cout << ans[i] << sp;
-	}
-
-	cout << nl;
+    cin >> n;
+    int a[n + 1];
+    
+    floop(i,1,n+1){
+        cin >> a[i];
+    }
+    
+    int dp[n + 1];
+    floop(i,0,n+1){
+        dp[i] = 1;
+    }
+    
+    floop(i,2,n+1){ 
+        for(int j = 1; j * j <= i; j++){
+            if(i % j != 0) continue;
+            if(a[j] < a[i]) {
+                dp[i] = max(dp[i], 1 + dp[j]);
+            }
+            if(a[i/j] < a[i]) {
+                dp[i] = max(dp[i], 1 + dp[i / j]);
+            }
+        }
+    }
+    
+    cout << *max_element(dp,dp+n+1) << nl;
 }
 int main(){
     int t;
