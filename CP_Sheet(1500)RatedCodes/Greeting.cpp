@@ -11,10 +11,6 @@
 #include <algorithm>
 #include <set>
 #include <queue>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-#define Oset tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
 using namespace std;
 #define ll long long 
 #define pint pair<int,int>
@@ -126,19 +122,19 @@ ll calculateSumOfFirstX(int x){
 }
 void logic(){
     int n;
-        cin >> n;
-        vpint vec(n);
-        floop(i,0,n)
-            cin >> vec[i].first >> vec[i].second;
+    cin >> n;
+    vpint vec(n);
+    floop(i,0,n)
+        cin >> vec[i].first >> vec[i].second;
 
-        sort(vec.begin(), vec.end());
-        Oset st;
-        long long ans = 0;
-        floop(i,0,n){
-            ans += i - st.order_of_key(vec[i].second); 
-            st.insert(vec[i].second); 
-        }
-        cout << ans << nl;
+    sort(vec.begin(), vec.end());
+    Oset st;
+    long long ans = 0;
+    floop(i,0,n){
+        ans += i - st.order_of_key(vec[i].second); 
+        st.insert(vec[i].second); 
+    }
+    cout << ans << nl;
 }
 int main(){
     int t;
