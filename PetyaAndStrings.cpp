@@ -2,6 +2,17 @@
 #include <string>
 
 using namespace std;
+//Another way to solve the problem, by simply making the string to lowercase using parameters and functions :
+// void solve()
+// {
+//     string s1,s2;
+//     cin>>s1;
+//     cin>>s2;
+//     transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+//     transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+//     cout<<s1.compare(s2)<<endl;
+// }
+
 int main(){
     string s1,s2;
     cin >> s1;
