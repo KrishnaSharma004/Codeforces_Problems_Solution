@@ -34,3 +34,22 @@ int32_t main(){
 
 	return 0;
 }
+
+//solution 2 :
+void solve(){
+    int n, x;
+    cin >> n >> x;
+    vector<int> a(n + 1, 0);
+    for(int i = 0 ; i < n ; ++i){
+        int m;
+        cin >> m;
+        a[m]++;
+    }
+    int ans = 0;
+    for(int i = 0; i < x ; ++i){
+        if(a[i] == 0) ans++;
+    }
+    if(a[x] > 0) ans++;
+
+    cout << ans << '\n';
+}
