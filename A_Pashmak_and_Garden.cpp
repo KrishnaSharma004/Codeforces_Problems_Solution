@@ -9,10 +9,6 @@ using namespace std;
 typedef long long ll;
 
 int32_t main(){
-#ifndef ONLINE_JUDGE
-    freopen("Input.txt","r", stdin);
-    freopen("Output.txt","w", stdout);
-#endif
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
 
