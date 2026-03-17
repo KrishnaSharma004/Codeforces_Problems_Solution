@@ -8,6 +8,24 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 typedef long long ll;
 
+void solve2(){
+    int n, x;
+    cin >> n >> x;
+    vector<int> a(n);
+    vector<int> f(2);
+
+    for(int i = 0; i < n ; ++i){
+        cin >> a[i];
+        f[a[i]&1]++;
+    }
+    bool flg = 0;
+    for(int i = 1 ; i <= f[1] && i <= x ; i+= 2){
+        int need = x - i;
+        if(need <= f[0]) flg = 1; 
+    }
+    cout << (flg ? "Yes" : "No") << '\n';
+}
+
 void solve(){
     int n, x;
     cin >> n >> x;
