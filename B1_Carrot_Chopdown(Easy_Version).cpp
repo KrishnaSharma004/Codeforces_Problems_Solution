@@ -5,6 +5,28 @@ typedef long long ll;
 const ll INF = 8*1e18;
 ll binpowtItr(ll a, ll b){ll res = 1;while(b > 0){if(b & 1){res = res * a;}a *= a;b >>= 1;}return res;}
 
+/*
+    int n, m;
+    cin >> n >> m;
+
+    vector<int> a(n);
+    for(auto &i : a) cin >> i;
+
+    vector<int> hs(m+1, 0);
+    for(int i = 0 ; i < n ; ++i){
+        hs[a[i]]++;
+    }
+    for(int i = m ; i > = 0 ; i--){
+        hs[i - 1] += hs[i];
+    }  
+    int ans = 0;
+    for(int i = 1 ; i <= m ; ++i){
+        int nw = hs[i];
+        if(i*2 <= m) nw += hs[i*2] - hs[i*2 + 1];
+        ans = max(ans, nw);
+    }
+    cout << ans << '\n';
+*/
 void krishna(){
     int n, m;
     cin >> n >> m;
